@@ -5,32 +5,32 @@ using namespace std;
 
 int main() {
     // Write C++ code here
-    cout << "#############################################" << endl;
-    cout << "#                                           #" << endl;
-    cout << "#\t\tRetail Store Management System\t\t#" << endl;
-    cout << "#\t\tVersion: 0.0.1                \t\t#" << endl;
-    cout << "#\t\tAuthor: Arohbi                \t\t#" << endl;
-    cout << "#                                           #" << endl;
-    cout << "#############################################" << endl;
+    cout << "#########################################" << endl;
+    cout << "#                                       #" << endl;
+    cout << "#\t\tMath Operation Calculator\t\t#" << endl;
+    cout << "#\t\tVersion: 0.0.1            \t\t#" << endl;
+    cout << "#\t\tAuthor: Arohbi            \t\t#" << endl;
+    cout << "#                                       #" << endl;
+    cout << "#########################################" << endl;
     
-    cout << "______________________________________________" << endl;
-    cout << "│                                            │" << endl;
-    cout << "│\t\t1. Point of Sale                  \t │" << endl;
-    cout << "│\t\t2. Customer Details              \t │" << endl;
-    cout << "│\t\t3. Exit                           \t │" << endl;
-    cout << "│                                            │" << endl;
-    cout << "‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" << endl;
+    cout << "______________________________________" << endl;
+    cout << "│                                    │" << endl;
+    cout << "│\t\t1. Standard                \t │" << endl;
+    cout << "│\t\t2. Scientific              \t │" << endl;
+    cout << "│\t\t2. Programmer              \t │" << endl;
+    cout << "│\t\t3. Exit                    \t │" << endl;
+    cout << "│                                    │" << endl;
+    cout << "‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" << endl;
     
-    int menu;
+    int menu, number1, number2;
+    float results;
     cout << "Please select from menu: ";
     cin >> menu;
     
     if (menu == 1)
     {
-        int number1, number2;
-        float results;
         char operation;
-        cout << "Welcome to Blataditz POS system " << endl;
+        cout << "Standard Calculator System " << endl;
         cout << "Enter a number: ";
         cin >> number1;
         cout << "Enter a second number: ";
@@ -55,6 +55,7 @@ int main() {
                 results = number1 % number2;
                 break;
             default:
+                //add logic for invalid operation
                 break;
         }
         cout << "The results is: " << setprecision(10) << results << endl;
@@ -65,11 +66,55 @@ int main() {
     }
     if (menu == 2)
     {
-        cout << "You've selected " << menu;
+        cout << "Scientific Calculator System " << endl;
+        cout << "Enter a number: ";
+        cin >> number1;
+        cout << "Enter a second number: ";
+        cin >> number2;
+        cout << "Enter an operation (root,exp,log,!,fib): ";
+        string operation;
+        cin >> operation;
+        if (operation == "root")
+        {
+            
+        }
+        else if (operation == "exp")
+        {
+            
+        }
+        else if (operation == "log")
+        {
+            
+        }
+        else if (operation == "!")
+        {
+            
+        }
+        else if (operation == "fib")
+        {
+            
+        }
+        else
+        {
+            cout << "Invalid Input.";
+        }
+        //square root
+        //exponent
+        //logarithmic
+        //factorial
+        //fibonacci
     }
     if (menu == 3)
     {
-        cout << "You've selected " << menu;
+        //int number1, number2;
+        //float results;
+        //char operation;
+        //cout << "Computer Number Conversion System " << endl;
+        //dec to bin
+        //dec to oct
+        //dec to hex
+        //bin to hex
+        //hex to bin
     }
     return 0;
 }
