@@ -1,6 +1,8 @@
 // Online C++ compiler to run C++ program online
 #include <iostream>
 #include <iomanip>
+#include <cmath>
+
 using namespace std;
 
 int main() {
@@ -66,33 +68,43 @@ int main() {
     }
     if (menu == 2)
     {
+        string op;
         cout << "Scientific Calculator System " << endl;
-        cout << "Enter a number: ";
-        cin >> number1;
-        cout << "Enter a second number: ";
-        cin >> number2;
         cout << "Enter an operation (root,exp,log,!,fib): ";
-        string operation;
-        cin >> operation;
-        if (operation == "root")
+        cin >> op;
+        
+        if (op == "root")
         {
-            
+            cout << "Enter a number: ";
+            cin >> number1;
+            cout << "The results is:" << sqrt(number1);
         }
-        else if (operation == "exp")
+        else if (op == "exp")
         {
-            
+            cout << "Enter a number: ";
+            cin >> number1;
+            cout << "Enter a number raise to expotent: ";
+            cin >> number2;
+            cout << "The results is: " << pow(number1, number2);
         }
-        else if (operation == "log")
+        else if (op == "log")
         {
-            
+            cout << "Enter a number: ";
+            cin >> number1;
+            cout << "The results is:" << log(number1);
         }
-        else if (operation == "!")
+        else if (op == "!")
         {
-            
+            cout << op;
         }
-        else if (operation == "fib")
+        else if (op == "fib")
         {
-            
+            int fib = 0;
+            for(int ctr=1; ctr<=10; ctr++)
+            {
+                cout << fib << " + " << ctr << " = " << fib + ctr << endl;
+                fib = fib + ctr;
+            }
         }
         else
         {
