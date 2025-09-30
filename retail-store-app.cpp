@@ -95,26 +95,67 @@ int main() {
         }
         else if (op == "!")
         {
-            cout << op;
+            long current_factorial = 1;
+            long previous_factorial = 1;
+            
+            cout << "Enter a number: ";
+            cin >> number1;
+            cout << "Factorial Calculation" << endl;
+            
+            if (number1 == 0)
+            {
+                cout << "0! = 1" << endl;
+            }
+            
+            for (int ctr = 1; ctr <= number1; ++ctr)
+            {
+                if (ctr == 1)
+                {
+                    current_factorial = 1;
+                    cout << "1! = " << current_factorial << endl;
+                }
+                else
+                {
+                    //add validation for possible overflow
+                    current_factorial = previous_factorial * ctr;
+                    cout << ctr << "! = " << previous_factorial << " x " << ctr << " = " << current_factorial << endl;
+                    previous_factorial = current_factorial;
+                }
+            }
         }
         else if (op == "fib")
         {
-            int fib = 0;
-            for(int ctr=1; ctr<=10; ctr++)
+            //next to do is to add validation for the input for all function
+            long a = 0;
+            long b = 1;
+            long next_term;
+            
+            cout << "Enter a number: ";
+            cin >> number1;
+            cout << "Fibonacci Sequence" << endl;
+            
+            if (number1 >= 1) 
             {
-                cout << fib << " + " << ctr << " = " << fib + ctr << endl;
-                fib = fib + ctr;
+                cout << "0\n";
+            }
+            if (number1 >= 2) 
+            {
+                cout << "1\n";
+            }
+    
+            for (int ctr = 2; ctr <= number1; ++ctr)
+            {
+                next_term = a + b;
+                cout << next_term << endl;
+                
+                a = b;
+                b = next_term;
             }
         }
         else
         {
             cout << "Invalid Input.";
         }
-        //square root
-        //exponent
-        //logarithmic
-        //factorial
-        //fibonacci
     }
     if (menu == 3)
     {
