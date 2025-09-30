@@ -95,32 +95,34 @@ int main() {
         }
         else if (op == "!")
         {
-            long current_factorial = 1;
-            long previous_factorial = 1;
+            long factorial = 1;
             
             cout << "Enter a number: ";
             cin >> number1;
             cout << "Factorial Calculation" << endl;
             
-            if (number1 == 0)
+            for (int ctr = 0; ctr <= number1; ++ctr)
             {
-                cout << "0! = 1" << endl;
-            }
-            
-            for (int ctr = 1; ctr <= number1; ++ctr)
-            {
-                if (ctr == 1)
+                if (ctr == 0 || ctr == 1)
                 {
-                    current_factorial = 1;
-                    cout << "1! = " << current_factorial << endl;
+                    cout << ctr << "! = 1" << endl;
+                    factorial = 1;
+                    continue;
                 }
-                else
+                //add validation for max factorial 20!
+                factorial *= ctr;
+                cout << ctr << "! = ";
+                
+                for (int ctr2 = ctr; ctr2 >= 1; --ctr2)
                 {
-                    //add validation for possible overflow
-                    current_factorial = previous_factorial * ctr;
-                    cout << ctr << "! = " << previous_factorial << " x " << ctr << " = " << current_factorial << endl;
-                    previous_factorial = current_factorial;
+                    cout << ctr2;
+                    if (ctr2 > 1)
+                    {
+                        cout << " x ";
+                    }
                 }
+                
+                cout << " = " << factorial << endl;
             }
         }
         else if (op == "fib")
