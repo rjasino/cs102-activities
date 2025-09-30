@@ -5,6 +5,16 @@
 
 using namespace std;
 
+void renderSharp(int i)
+{
+    char sharp = '8';
+    if (i > 0)
+    {
+        cout << sharp;
+        renderSharp(i-1);
+    }
+}
+
 int main() {
     int menu, number1, number2;
     float results;
@@ -183,7 +193,10 @@ int main() {
             b = 0;
             b = a;
             a = a + 1;
-            cout << b << "," << a;
+            cout << b << "," << a << endl;
+            
+            renderSharp(10);
+            cout << endl;
             //int number1, number2;
             //float results;
             //char operation;
