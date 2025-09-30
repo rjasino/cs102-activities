@@ -9,8 +9,8 @@ int main() {
     int menu, number1, number2;
     float results;
         
-    do {
-        // Write C++ code here
+    do 
+    {
         cout << "#########################################" << endl;
         cout << "#                                       #" << endl;
         cout << "#\t\tMath Operation Calculator\t\t#" << endl;
@@ -18,7 +18,7 @@ int main() {
         cout << "#\t\tAuthor: Arohbi            \t\t#" << endl;
         cout << "#                                       #" << endl;
         cout << "#########################################" << endl;
-        
+            
         cout << "______________________________________" << endl;
         cout << "│                                    │" << endl;
         cout << "│\t\t1. Standard                \t │" << endl;
@@ -53,6 +53,11 @@ int main() {
                     results = number1 * number2;
                     break;
                 case '/':
+                    if (number2 == 0)
+                    {
+                        cout << "Cannot divide by zero.";
+                        return 0;
+                    }
                     results = (float)number1 / (float)number2;
                     break;
                 case '%':
