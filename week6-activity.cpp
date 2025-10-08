@@ -60,7 +60,29 @@ float computeScientific(string op, int num1, int num2)
     }
     if (op == "fib")
     {
+        long a = 0;
+        long b = 1;
+        long next_term;
+                
+        cout << "Fibonacci Sequence" << endl;
+                
+        if (num1 >= 1) 
+        {
+            cout << "0\n";
+        }
+        if (num1 >= 2) 
+        {
+            cout << "1\n";
+        }
         
+        for (int ctr = 2; ctr <= num1; ++ctr)
+        {
+            next_term = a + b;
+            cout << next_term << endl;
+                    
+            a = b;
+            b = next_term;
+        }
     }
     if (op == "fac")
     {
