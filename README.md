@@ -37,9 +37,11 @@ List of Products:
 
 3\. ...
 
-Select product to add: 1,2
+Select product to add: 1
 
-Quantity: 2,1
+Quantity: 2
+
+Add more? (y/n): y 
 
 -----------------------------------------------
 
@@ -67,11 +69,11 @@ List of Products:
 
 3\. ...
 
-Select product to add: 
+Select product to add: 2
 
-Quantity: 
+Quantity: 1
 
-Add more? (y-Yes, n-No): n
+Add more? (y/n): n
 
 -----------------------------------------------
 
@@ -81,15 +83,6 @@ Purchase Order
 
 ===============================================
 
-Ordered Items:
-
-[x] Keyboard - unit price: 500php, qty: 2, total price: 1000php
-
-[x] Mouse - unit price: 200php, qty: 1, total price: 200php
-
-Grand Total: 1200php
-
-===============================================
 
 Customer Information:
 
@@ -125,19 +118,10 @@ Enter choice: 1
 
 ===============================================
 
-Purchase Order
+Order Confirmation
 
 ===============================================
 
-Ordered Items:
-
-[x] Keyboard - unit price: 500php, qty: 2, total price: 1000php
-
-[x] Mouse - unit price: 200php, qty: 1, total price: 200php
-
-Grand Total: 1200php
-
-===============================================
 
 Name: Roberto Asino
 
@@ -149,14 +133,18 @@ Payment Method: GCash
 
 Shipping Method: Door to Door
 
-Customer Information confirmed? (y-Yes, n-No): y
+Customer Information confirmed? (y/n): y
 
-Processing Payment (just add timer)
+Processing Payment... (just add timer)
 
-Payment Confirmed...
+Payment Confirmed!
 
-Processing Order...
+Processing Order... (just add timer)
 
+Order Successfully Placed!
+
+
+Thank you for your purchase!
 -----------------------------------------------
 
 ===============================================
@@ -173,4 +161,4 @@ Select from Menu:
 
 3\. Exit
 
-Select from choices:
+Select from choices: 2
