@@ -255,31 +255,33 @@ class Main {
     }
 
     static void inputCustomerInformation(Scanner scanner) {
+        scanner.nextLine(); // Consume leftover newline
         System.out.println("===========================================================");
         System.out.println("\tPurchase Order\t");
         System.out.println("===========================================================\n");
         System.out.println("\tCustomer Information:");
         System.out.print("\tEnter Name: ");
-        customer.setName(scanner.next());
+        customer.setName(scanner.nextLine());
         System.out.print("\tEnter Email: ");
-        customer.setEmail(scanner.next());
+        customer.setEmail(scanner.nextLine());
         System.out.print("\tEnter Phone Number: ");
-        customer.setPhoneNumber(scanner.next());
+        customer.setPhoneNumber(scanner.nextLine());
         System.out.print("\tEnter Address: ");
-        customer.setAddress(scanner.next());
+        customer.setAddress(scanner.nextLine());
         System.out.print("\tSelect Payment Method: \n");
         System.out.print("\t\t1. Cash on Delivery\n\t\t2. GCash\n\t\t3. Bank Transfer\n\t\tEnter Choice: ");
         order.setPaymentMethod(scanner.nextInt());
+        scanner.nextLine(); // Consume newline after int input
         System.out.print("\n\t\tEnter Bank/GCash Account Number: ");
-        order.setPaymentAccountNumber(scanner.next());
+        order.setPaymentAccountNumber(scanner.nextLine());
         System.out.print("\n\t\tEnter Account Name: ");
-        order.setPaymentAccountName(scanner.next());
+        order.setPaymentAccountName(scanner.nextLine());
         System.out.print("\tSelect Shipping Method: \n");
         System.out.print("\t\t1. Door to Door\n\t\t2. Pick Up\n\t\tEnter Choice: ");
         order.setShippingMethod(scanner.nextInt());
     }
     
-    static void displayConfirmation() {
+    static char displayConfirmation(Scanner scanner) {
         clearScreen();
         System.out.println("===========================================================");
         System.out.println("\tOrder Confirmation\t");
@@ -289,19 +291,77 @@ class Main {
         System.out.println("\tEmail: " + customer.getEmail());
         System.out.println("\tPhone Number: " + customer.getPhoneNumber());
         System.out.println("\tAddress: " + customer.getAddress() + "\n");
-        
+
         displayCartItems();
-        
+
         System.out.println("\n\tPayment Method: " + order.getPaymentMethod());
         System.out.println("\tAccount Number: " + order.getPaymentAccountNumber());
         System.out.println("\tAccount Name: " + order.getPaymentAccountName() + "\n");
-        
+
         System.out.println("\tShipping Method: " + order.getShippingMethod());
-        
-        System.out.println("\n===========================================================\n");
-        System.out.println("\tThank you for your purchase!");
+
+        System.out.print("\n\tCustomer Information confirmed? (y/n): ");
+        char confirm = scanner.next().charAt(0);
+
+        if (confirm == 'y' || confirm == 'Y') {
+            System.out.print("\n\tProcessing your order");
+            for (int i = 0; i < 3; i++) {
+                try {
+                    Thread.sleep(1000);
+                    System.out.print(".");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            System.out.println("\n\tPayment Confirmed!");
+            System.out.print("\n\tProcessing Order");
+            for (int i = 0; i < 3; i++) {
+                try {
+                    Thread.sleep(1000);
+                    System.out.print(".");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            System.out.println("\n\tOrder Successfully Placed!");
+        } else {
+            System.out.println("\n\tOrder cancelled. Returning to main menu...");
+        }
+        System.out.println("\n\tThank you for your purchase!\n");
+        return confirm;
     }
 
+    static void addItemToCart(Scanner scanner) {
+        char moreChoice = 'n';
+        do {
+            clearScreen();
+            System.out.println("===========================================================");
+            System.out.println("\tPurchase Order\t");
+            System.out.println("===========================================================\n");
+
+            if (order.getCartList().size() > 0) {
+                displayCartItems();
+                System.out.println("\n===========================================================\n");
+            }
+            displayInventory();
+
+            System.out.print("\n\tSelect product to add: ");
+            int prodChoice = scanner.nextInt();
+            System.out.print("\n\tEnter quantity: ");
+            int qtyChoice = scanner.nextInt();
+            System.out.print("\n\tAdd more? (y/n): ");
+            moreChoice = scanner.next().charAt(0);
+            Product selectedProduct = inventory.getItem(prodChoice);
+            selectedProduct.setQuantity(qtyChoice);
+            order.addToCart(selectedProduct);
+        } while (moreChoice == 'y' || moreChoice == 'Y');
+    }
+
+    static void clearOrderDetails() {
+        order = new Order();
+        customer = new Customer();
+    }
+    
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int choice = 0;
@@ -314,48 +374,25 @@ class Main {
 
             switch(choice) {
                 case 1:
-                    char moreChoice = 'n';
+                    char orderChoice = 'n';
                     do {
+                        addItemToCart(scanner);
                         clearScreen();
-                        System.out.println("===========================================================");
-                        System.out.println("\tPurchase Order\t");
-                        System.out.println("===========================================================\n");
-                        
-                        if (order.getCartList().size() > 0) {
-                            displayCartItems();
-                            System.out.println("\n===========================================================\n");
-                        }
-                        displayInventory();
-
-                        System.out.print("\n\tSelect product to add: ");
-                        int prodChoice = scanner.nextInt();
-                        System.out.print("\n\tEnter quantity: ");
-                        int qtyChoice = scanner.nextInt();
-                        System.out.print("\n\tAdd more? (y/n): ");
-                        moreChoice = scanner.next().charAt(0);
-
-                        Product selectedProduct = inventory.getItem(prodChoice);
-                        selectedProduct.setQuantity(qtyChoice);
-                        order.addToCart(selectedProduct);
-                    } while (moreChoice == 'y' || moreChoice == 'Y');
-                    
-                    clearScreen();
-                    inputCustomerInformation(scanner);
-                    displayConfirmation();
+                        inputCustomerInformation(scanner);
+                        orderChoice = displayConfirmation(scanner);
+                        clearOrderDetails();
+                    } while (orderChoice == 'n' || orderChoice == 'N');
                     break;
                 case 2:
-                    System.out.println("Customer Management selected.");
+                    System.out.println("Inventory Management selected.");
                     break;
                 case 3:
-                    System.out.println("Purchase Order selected.");
-                    break;
-                case 4:
                     System.out.println("Exiting the application.");
                     break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
-        } while (choice != 4);
+        } while (choice != 3);
 
         scanner.close();
 
