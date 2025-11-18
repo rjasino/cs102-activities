@@ -143,8 +143,8 @@ Processing Order... (just add timer)
 
 Order Successfully Placed!
 
-
 Thank you for your purchase!
+
 -----------------------------------------------
 
 ===============================================
